@@ -1,0 +1,17 @@
+.edit-container{
+    display: inline-block;
+    position: relative;
+
+    button{
+        &[aria-expanded=true]{
+            & + div{
+                display: inline-block;
+            }
+        }
+        &[aria-expanded=false]{
+            & + div{
+                display: none;
+            }
+        }
+    }
+}

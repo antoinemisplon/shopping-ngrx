@@ -1,0 +1,7 @@
+<div class="edit-container">
+    <button [attr.aria-expanded]="expanded" (click)="expandedToggle()">edit</button>
+    <div>
+        <input type="text" [attr.value]="item.name" #edit/>
+        <button (click)="editItem(item.id, edit.value)">Send</button>
+    </div>
+</div>

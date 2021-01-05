@@ -1,0 +1,15 @@
+<section>
+    <h1>Lists</h1>
+    <ul>
+        <ng-container *ngFor="let list of lists | async">
+            <li (click)="selectList(list.id)" [class.select]="list.selected">
+                <h2>{{ list.name }}</h2>
+                <ul *ngIf="list.items.length != 0">
+                    <li *ngFor="let item of list.items">
+                        {{ item.name }}
+                    </li>
+                </ul>
+            </li>
+        </ng-container>
+    </ul>
+</section>

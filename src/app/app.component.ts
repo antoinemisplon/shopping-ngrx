@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shopping';
+  listName = 'Liste de course du 7'
 }

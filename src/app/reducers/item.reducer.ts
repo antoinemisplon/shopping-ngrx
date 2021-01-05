@@ -6,7 +6,7 @@ const initialState: Item = {
     name: 'Beurre'
 };
 
-export function reducer(state: Item[] = [initialState], action : ItemActions.Actions){
+export function reducerItem(state: Item[] = [initialState], action : ItemActions.Actions){
     switch(action.type){
         case ItemActions.ADD_ITEM:
             return [...state, action.payload];

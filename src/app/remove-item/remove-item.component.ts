@@ -1,20 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import * as ItemActions from '../actions/item.actions';
+import { ActionsService } from '../services/actions.service';
 
 @Component({
   selector: 'app-remove-item',
   templateUrl: './remove-item.component.html',
   styleUrls: ['./remove-item.component.scss']
 })
+
 export class RemoveItemComponent implements OnInit {
 
   @Input() id: string;
 
-  constructor(private store: Store) { }
+  constructor(public actionsService: ActionsService) { }
 
   removeItem(){
-    this.store.dispatch(new ItemActions.RemoveItem(this.id));
+    this.actionsService.removeItem(this.id);
   }
 
   ngOnInit(): void {

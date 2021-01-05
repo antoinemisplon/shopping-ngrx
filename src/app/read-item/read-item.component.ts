@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
 import { Item } from '../models/item.models';
-import { AppState } from '../app.state';
+import { ActionsService } from '../services/actions.service';
 
 @Component({
   selector: 'app-read-item',
@@ -12,8 +11,10 @@ import { AppState } from '../app.state';
 export class ReadItemComponent implements OnInit {
 
   items: Observable<Item[]>;
-  constructor(private store: Store<AppState>) { 
-    this.items = store.select('items');
+  lists: Observable<Item[]>;
+
+  constructor(public actionsService: ActionsService) { 
+    this.items = this.actionsService.items;
   }
 
   ngOnInit(): void {

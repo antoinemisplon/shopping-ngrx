@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
 import * as ListAction from '../actions/list.actions';
 import { Item } from '../models/item.models';
+import { ActionsService } from '../services/actions.service';
 
 @Component({
   selector: 'app-add-item-list',
@@ -14,13 +15,12 @@ export class AddItemListComponent implements OnInit {
 
   @Input() item: Item;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(public actionsService: ActionsService) { }
 
   ngOnInit(): void {
   }
 
   addItemList(){
-    this.store.dispatch(new ListAction.AddItemList(this.item))
+    this.actionsService.addItemList(this.item);
   }
-
 }

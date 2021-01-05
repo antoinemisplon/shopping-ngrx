@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Item } from '../models/item.models';
-import { Store } from '@ngrx/store';
-import * as ItemActions from '../actions/item.actions';
+import { ActionsService } from '../services/actions.service';
 
 @Component({
   selector: 'app-edit-item',
@@ -13,7 +12,7 @@ export class EditItemComponent implements OnInit {
   @Input() item: Item;
   expanded: boolean = false;
 
-  constructor(private store: Store) { }
+  constructor(public actionsService: ActionsService) { }
 
   expandedToggle(){
     this.expanded = (this.expanded)?false:true;
@@ -21,7 +20,7 @@ export class EditItemComponent implements OnInit {
 
   editItem(id, name){
     if(this.item){
-      this.store.dispatch(new ItemActions.EditItem({ id: id, name: name }));
+      this.actionsService.editItem(id, name);
     }
   }
 
